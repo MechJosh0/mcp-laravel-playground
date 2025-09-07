@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/user/{user}', function (\App\Models\User $user) {
+    return view('user.profile', compact('user'));
+})->name('user.profile');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
